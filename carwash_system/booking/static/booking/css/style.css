@@ -508,4 +508,66 @@ select:focus {
     .form-group {
         width: 100%;
     }
+
+     /* PAGE */
+    .admin-page {
+        padding: 15px;
+    }
+
+    /* NAV BAR (date + arrows) */
+    .admin-nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .admin-nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        width: 22%;
+    }
+
+    /* ===== TABLE FIX ===== */
+    .admin-card {
+        padding: 10px;
+    }
+
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        min-width: 120px;
+    }
+    
+
+    /* ===== STATUS FORM ===== */
+    .status-form {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .status-form select {
+        width: 100%;
+    }
+
+    .status-form button {
+        width: 100%;
+        padding: 6px;
+        font-size: 12px;
+    }
+    
 }
