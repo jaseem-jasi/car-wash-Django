@@ -1,0 +1,93 @@
+{% extends "booking/base.html" %}
+{% block content %}
+
+<div class="page">
+
+    <div class="booking-wrapper">
+
+        <div class="booking-header">
+            <h2>Book Your Car Wash</h2>
+            <p>Fast & easy booking in seconds</p>
+        </div>
+
+        <form method="post" class="booking-form">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                {{ form.errors }}
+            </div>
+            {% endif %}
+
+            <div class="card booking-card">
+
+                <!-- ROW 1 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                        <small class="error">{{ form.name.errors }}</small>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.phone.label_tag }}
+                        {{ form.phone }}
+                        <small class="error">{{ form.phone.errors }}</small>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        <small class="error">{{ form.email.errors }}</small>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.car_number.label_tag }}
+                        {{ form.car_number }}
+                        <small class="error">{{ form.car_number.errors }}</small>
+                    </div>
+                </div>
+
+                <!-- DATE -->
+                <div class="form-group">
+                    <label>Date</label>
+                    <select name="date" id="date-select" class="form-select">
+                        {% for item in day_messages %}
+                        <option value="{{ item.date|date:'Y-m-d' }}">
+                            {{ item.date }} - {{ item.msg }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- TIME + TYPE -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Time Slot</label>
+                        {{ form.time_slot }}
+                        <small class="error">{{ form.time_slot.errors }}</small>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.wash_type.label_tag }}
+                        {{ form.wash_type }}
+                        <small class="error">{{ form.wash_type.errors }}</small>
+                    </div>
+                </div>
+
+                <div class="form-btn">
+                    <button type="button" class="btn-back" onclick="window.location.href='/'">Back</button>
+                    <button type="submit" class="btn-submit">Book Now</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

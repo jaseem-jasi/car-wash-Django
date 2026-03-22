@@ -1,0 +1,106 @@
+{% extends "booking/base.html" %}
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .navbar {
+        display: none;
+    }
+</style>
+
+<div class="admin-page">
+
+    <h3>Staff Dashboard</h3>
+
+    <div class="admin-nav">
+        <a href="?day={{ day_offset|add:'-1' }}">⬅ Previous</a>
+
+        <h4>
+            {% if is_today %}
+                Today ({{ selected_date }})
+            {% else %}
+                Bookings for {{ selected_date }}
+            {% endif %}
+        </h4>
+
+        <a href="?day={{ day_offset|add:'1' }}">Next ➡</a>
+    </div>
+
+
+    <!-- ===== STATS ===== -->
+    <div class="stats">
+
+        <div class="stat-card total">
+            <h6>Total</h6>
+            <h3>{{ total_count }}</h3>
+        </div>
+
+        <div class="stat-card washing">
+            <h6>Washing</h6>
+            <h3>{{ washing_count }}</h3>
+        </div>
+
+        <div class="stat-card completed">
+            <h6>Completed</h6>
+            <h3>{{ completed_count }}</h3>
+        </div>
+
+        <div class="stat-card collected">
+            <h6>Collected</h6>
+            <h3>{{ collected_count }}</h3>
+        </div>
+
+    </div>
+
+
+    <!-- ===== TABLE ===== -->
+    <div class="admin-card">
+        <h5>Bookings</h5>
+
+        {% if bookings %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Car Number</th>
+                    <th>Wash Type</th>
+                    <th>Time Slot</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for b in bookings %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ b.car_number }}</td>
+                    <td>{{ b.wash_type.name }}</td>
+                    <td>{{ b.time_slot.label }}</td>
+
+                    <td>
+                        <form method="post" action="{% url 'update_booking_status' %}" class="status-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="booking_id" value="{{ b.id }}">
+
+                            <select name="status">
+                                <option value="pending" {% if b.status == "pending" %}selected{% endif %}>Processing</option>
+                                <option value="washing" {% if b.status == "washing" %}selected{% endif %}>Washing</option>
+                                <option value="completed" {% if b.status == "completed" %}selected{% endif %}>Completed</option>
+                                <option value="collected" {% if b.status == "collected" %}selected{% endif %}>Collected</option>
+                            </select>
+
+                            <button>Update</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p class="empty">No bookings for this date.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

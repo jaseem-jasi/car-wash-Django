@@ -1,0 +1,71 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- ===== HERO / SLIDER ===== -->
+<div class="hero-slider">
+    <div class="slides">
+        <img src="{% static 'booking/images/carwashing (1).jpg' %}" class="slide active">
+        <img src="{% static 'booking/images/carwashing (2).jpg' %}" class="slide">
+        <img src="{% static 'booking/images/carwashing (3).jpg' %}" class="slide">
+    </div>
+
+    <div class="hero-content">
+        <h2>Premium Car Wash Service</h2>
+        <p>Fast • Reliable • Affordable</p>
+        <a href="{% url 'book' %}" class="btn-book">Book Now</a>
+    </div>
+</div>
+
+
+
+<!-- ===== POPUP ===== -->
+{% if car_number %}
+<div class="popup-overlay" id="statusPopup">
+    <div class="popup-box">
+
+        <div class="popup-header">
+            <h4>Car Wash Status</h4>
+            <button class="popup-close" onclick="closePopup()">×</button>
+        </div>
+
+        <div class="popup-body">
+            {% if message %}
+            <p class="popup-success">{{ message }}</p>
+            {% else %}
+            <p class="popup-error">No wash details found for this vehicle.</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("statusPopup").style.display = "flex";
+
+    if (window.history.replaceState) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+    function closePopup() {
+        document.getElementById("statusPopup").style.display = "none";
+    }
+</script>
+{% endif %}
+
+
+<!-- ===== SLIDER SCRIPT ===== -->
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}, 3000);
+</script>
+
+{% endblock %}

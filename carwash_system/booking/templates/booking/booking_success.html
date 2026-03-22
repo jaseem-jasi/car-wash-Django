@@ -1,0 +1,36 @@
+{% extends "booking/base.html" %}
+{% block content %}
+
+<div class="popup-overlay" id="successPopup">
+    <div class="popup-box">
+
+        <div class="popup-header">
+            <h4>Booking Confirmed ✅</h4>
+            <button class="popup-close" onclick="closePopup()">×</button>
+        </div>
+
+        <div class="popup-body">
+            <p class="popup-success">Your booking is successful!</p>
+
+            <p><strong>ID:</strong> #{{ booking.id }}</p>
+            <p>{{ booking.date }} — {{ booking.time_slot.label }}</p>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Show popup automatically
+    document.getElementById("successPopup").style.display = "flex";
+
+    function closePopup() {
+        document.getElementById("successPopup").style.display = "none";
+        window.location.href = "/book"; // redirect after close
+    }
+    setTimeout(() => {
+        window.location.href = "/book";
+    }, 4000); // 4 seconds
+</script>
+
+{% endblock %}
