@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-ubk5fe3kv2tv2^srgf_i=j(1r3kh#ph*_02wjq_h&9d7j(l%$g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://car-wash-django-1.onrender.com']
+ALLOWED_HOSTS = [
+    'car-wash-django-1.onrender.com'
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://car-wash-django-1.onrender.com'
+]
 
 # Application definition
 
