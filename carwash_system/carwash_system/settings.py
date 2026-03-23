@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'car-wash-django-1.onrender.com',
+    'localhost',
 ]
 CSRF_TRUSTED_ORIGINS = ['https://car-wash-django-1.onrender.com']
 
