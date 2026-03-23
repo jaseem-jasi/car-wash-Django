@@ -1,8 +1,8 @@
 # 🚗 Car Wash Booking System (Django)
 
 A simple Django-based web application for booking car wash services and managing them through staff and admin dashboards.
-
 ---
+
 ## 📌 Features
 * User can book car wash
 * Check car wash status using car number
@@ -11,39 +11,47 @@ A simple Django-based web application for booking car wash services and managing
 ---
 
 ## ⚙️ Installation
+1. Clone the repository
+```
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
 
-1. Create virtual environment
+2. Create virtual environment
 ```
 python -m venv env
 ```
 
-2. Activate environment
+3. Activate environment
 ```
 env\Scripts\activate
 ```
 
-3. Run migrations
+4. Install dependencies
+```
+pip install -r requirements.txt
+```
+
+5. Run migrations
 ```
 python manage.py migrate
 ```
 
-4. Create superuser
+6. Create superuser
 ```
 python manage.py createsuperuser
 ```
 
-5. Run server
+7. Run server
 ```
 python manage.py runserver
 ```
 
 ---
-
 ## 🌐 Access URLs
-
 After running the server, open:
 
-👤 User Interface
+ 👤 User Interface
 ```
 http://127.0.0.1:8000/
 ```
@@ -51,7 +59,7 @@ http://127.0.0.1:8000/
 * Check car status
 ---
 
-🔐 Admin Panel (Superuser)
+ 🔐 Admin Panel (Superuser)
 ```
 http://127.0.0.1:8000/admin
 ```
@@ -59,7 +67,7 @@ http://127.0.0.1:8000/admin
 * Manage all records
 ---
 
-### 👨‍🔧 Staff Dashboard
+ 👨‍🔧 Staff Dashboard
 ```
 http://127.0.0.1:8000/admin-dashboard
 ```
@@ -67,13 +75,13 @@ http://127.0.0.1:8000/admin-dashboard
 * Update status (Processing, Washing, Completed, Collected)
 ---
 
-🛠 Tech Stack
+ 🛠 Tech Stack
 * Python
 * Django
 * HTML, CSS, JavaScript
 ---
 
-📌 Notes
+ 📌 Notes
 * Make sure server is running before accessing URLs
 * Use superuser credentials to access admin panel
 * Staff dashboard is for internal use
