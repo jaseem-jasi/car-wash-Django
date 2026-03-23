@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'car-wash-django-1.onrender.com',
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://car-wash-django-1.onrender.com']
 
 # Application definition
 
